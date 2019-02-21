@@ -1,6 +1,7 @@
 /* Modules */
 import React from "react";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import FontLoader from './components/FontLoader';
 
 /* Screens */
 import Welcome from "./screens/Welcome";
@@ -28,8 +29,14 @@ const AppContainer = createAppContainer(AppNavigator);
 /**
  * App
  */
-const App = () => {
-  return <AppContainer />;
+class App extends React.Component {
+  render() {
+    return (
+      <FontLoader>
+        <AppContainer />
+      </FontLoader>
+    );
+  }
 };
 
 export default App;

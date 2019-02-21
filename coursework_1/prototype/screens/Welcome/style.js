@@ -19,9 +19,22 @@ const styles = StyleSheet.create({
         top: -150,
         width: screen.width
     },
+    dinoContainer: {
+        position: 'absolute',
+        top: -235,
+        left: 0,
+        right: 0,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    dino: {
+        width: 300,
+        height: 150
+    },
     bottom: {
         backgroundColor: '#4D4D4D',
-        flex: 2
+        flex: 2,
+        justifyContent: 'center'
     }
 
 });

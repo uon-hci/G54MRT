@@ -1,42 +1,65 @@
 /* Modules */
-import { StyleSheet, Dimensions } from 'react-native';
-
-/* Screen dimension */
-const screen = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 /* Stylesheet*/
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#BEE6F6',
-        flex: 1,
-        justifyContent: 'flex-end'
+        flex: 1
     },
     top: {
-        flex: 5
+        flex: 3,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    bump: {
-        position: 'absolute',
-        top: -150,
-        width: screen.width
+    title: {
+        fontFamily: 'touch_of_nature',
+        fontSize: 45,
+        textAlign: 'center',
+        color: '#666666'
+    },
+    subtitle: {
+        fontFamily: 'kiddish',
+        color: '#666666',
+        fontSize: 25
+    },
+    blank: {
+        flex: 1
     },
     dinoContainer: {
         position: 'absolute',
-        top: -235,
+        top: -135,
         left: 0,
         right: 0,
         justifyContent: 'center',
         alignItems: 'center'
     },
     dino: {
-        width: 300,
         height: 150
     },
     bottom: {
-        backgroundColor: '#4D4D4D',
-        flex: 2,
+        flex: 3,
+        alignItems: 'center',
         justifyContent: 'center'
+    },
+    descriptionContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        marginTop: 50
+    },
+    description: {
+        textAlign: 'center',
+        fontFamily: 'kiddish',
+        fontSize: 25,
+        color: '#F2F2F2',
+        maxWidth: 230
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1
     }
-
 });
 
 export default styles;

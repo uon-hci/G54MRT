@@ -1,6 +1,7 @@
 /* Modules */
 import React from 'react';
 import { View, Image, ImageBackground, Text } from 'react-native';
+import Touch from '../../components/Touch';
 import StartButton from './StartButton';
 
 /* Style */
@@ -10,8 +11,10 @@ import styles from './style';
  * Welcome
  */
 class Welcome extends React.Component {
+    toInstructions = () => {
+        this.props.navigation.navigate('Instructions');
+    }
     render() {
-        const fontsLoaded = true;
         return(
             <View style={styles.container}>
                 <View style={styles.top}>
@@ -27,7 +30,9 @@ class Welcome extends React.Component {
                         <Text style={styles.description}>Learn and have fun with this interactive museum experience</Text>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <StartButton />
+                        <Touch onPress={this.toInstructions}>
+                            <StartButton />
+                        </Touch>
                     </View>
                 </ImageBackground>
             </View>

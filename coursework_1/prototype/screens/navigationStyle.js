@@ -21,10 +21,6 @@ const styles = StyleSheet.create({
         fontFamily: 'touch_of_nature',
         color: '#666666',
         fontSize: 25
-    },
-    container: {
-        backgroundColor: '#F2F2F2',
-        flex: 1
     }
 });
 

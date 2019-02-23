@@ -4,18 +4,29 @@ import { StyleSheet } from 'react-native';
 /* Stylesheet*/
 const styles = StyleSheet.create({
     button: {
-        width: 150,
-        height: 50,
-        backgroundColor: '#F2F2F2',
+        paddingTop: 20,
+        paddingBottom: 20,
+        paddingLeft: 30,
+        paddingRight: 30,
         borderRadius: 15,
         justifyContent: 'center',
-        alignItems: 'center',
-        color: 'red'
+        alignItems: 'center'
     },
-    buttonText: {
+    darkButton: {
+        backgroundColor: '#666666'
+    },
+    lightButton: {
+        backgroundColor: '#F2F2F2'
+    },
+    text: {
         fontFamily: 'kiddish',
         textTransform: 'uppercase',
         fontSize: 22,
+    },
+    darkText: {
+        color: '#F2F2F2'
+    },
+    lightText: {
         color: '#666666'
     }
 });

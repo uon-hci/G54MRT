@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Image, ImageBackground, Text } from 'react-native';
 import Touch from '../../components/Touch';
-import StartButton from './StartButton';
+import Button from '../../components/Button';
 
 /* Style */
 import styles from './style';
@@ -30,9 +30,7 @@ class Welcome extends React.Component {
                         <Text style={styles.description}>Learn and have fun with this interactive museum experience</Text>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <Touch onPress={this.toInstructions}>
-                            <StartButton />
-                        </Touch>
+                        <Button text='START' color='light' onPress={this.toInstructions} />
                     </View>
                 </ImageBackground>
             </View>

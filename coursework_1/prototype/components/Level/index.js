@@ -17,21 +17,26 @@ class Level extends React.Component {
     }
 
     goLevel = () => {
-        console.log('going level', this.props.name);
+        if (!this.props.locked) {
+            console.log('going level', this.props.name);
+        }
     }
     
     render() {
-        const { name, userProgress } = this.props;
+        const { name, userProgress , locked } = this.props;
         const level = levels[name];
+        const color = locked ? '#999999' : level.color;
+        const icon = locked ? requireLevelIcon('locked') : requireLevelIcon(name);
         const progress = userProgress / level.total * 100;
+        const Progress = () => userProgress != undefined ? <Text style={styles.progress}>{progress}%</Text> : <Text style={styles.locked}>LOCKED</Text>;
         return (
             <Touch onPress={this.goLevel}>
                 <View style={styles.container}>
-                    <View style={[styles.picture, { backgroundColor: level.color }]}>
-                        <Image style={styles.icon} resizeMode='contain' source={requireLevelIcon(name)} />
+                    <View style={[styles.picture, { backgroundColor: color }]}>
+                        <Image style={styles.icon} resizeMode='contain' source={icon} />
                     </View>
                     <Text style={styles.name}>{this.capitalize(level.name)}</Text>
-                    <Text style={styles.progress}>{progress}%</Text>
+                    <Progress />
                 </View>
             </Touch>
         );

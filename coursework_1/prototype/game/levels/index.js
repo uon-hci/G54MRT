@@ -1,6 +1,7 @@
 /* Modules */
 import birds from './birds';
 import insects from './insects';
+import dinosaurs from './dinosaurs';
 
 /* Require */
 export const requireLevelIcon = (name) => {
@@ -9,6 +10,10 @@ export const requireLevelIcon = (name) => {
             return require('../../assets/images/level-birds.png');
         case 'insects':
             return require('../../assets/images/level-insects.png');
+        case 'dinosaurs':
+            return require('../../assets/images/level-birds.png');
+        case 'locked':
+            return require('../../assets/images/level-locked.png');
         default:
             return null;
     }
@@ -17,5 +22,6 @@ export const requireLevelIcon = (name) => {
 /* Levels */
 export const levels = {
     birds,
-    insects
+    insects,
+    dinosaurs
 };

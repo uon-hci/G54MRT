@@ -29,13 +29,21 @@ class Overview extends React.Component {
     }
 
     render() {
-        const { score } = this.state.userData;
+        const { userData } = this.state;
+        const { score } = userData;
         const levelsList = Object.keys(levels);
+        const leftLevels = levelsList.filter((level, index) => index % 2 == 0);
+        const rightLevels = levelsList.filter((level, index) => index % 2 != 0);
         return (
             <View style={styles.container}>
                 <Text style={styles.score}><Text style={styles.bold}>{score}</Text> points</Text>
                 <View style={styles.levels}>
-                    { levelsList.map(level => <Level key={level} name={level} userProgress={this.state.userData.levels[level].progress} />)}
+                    <View style={[styles.levelColumn, styles.leftLevels]}>
+                        { leftLevels.map(level => <Level key={level} name={level} userProgress={userData.levels[level].progress} locked={userData.levels[level].locked} />)}
+                    </View>
+                    <View style={[styles.levelColumn, styles.rightLevels]}>
+                        { rightLevels.map(level => <Level key={level} name={level} userProgress={userData.levels[level].progress} locked={userData.levels[level].locked}/>)}
+                    </View>
                 </View>
             </View>
         );

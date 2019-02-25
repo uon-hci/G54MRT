@@ -20,9 +20,10 @@ class Instructions extends React.Component {
 
     toGame = async () => {
         const username = this.state.username;
-        if (username.length > 3) {
+        if (username.length > 2) {
             try {
                 initialUserData.username = username;
+                // await AsyncStorage.clear();
                 await AsyncStorage.setItem('currentUsername', username);
                 const userData = await AsyncStorage.getItem(username);
                 if (!userData) {

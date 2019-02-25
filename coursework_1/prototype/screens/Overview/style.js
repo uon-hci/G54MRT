@@ -17,7 +17,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     levels: {
-        flex: 20
+        flex: 20,
+        flexDirection: 'row'
+    },
+    levelColumn: {
+        alignItems: 'center'
+    },
+    leftLevels: {
+        flex: 1
+    },
+    rightLevels: {
+        paddingTop: 80,
+        flex: 1
     }
 });
 

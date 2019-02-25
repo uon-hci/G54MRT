@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         width: 150,
         height: 200,
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 30
     },
     picture: {
         width: 150,
@@ -27,6 +28,10 @@ const styles = StyleSheet.create({
     progress: {
         fontWeight: 'bold',
         color: '#46AF64'
+    },
+    locked: {
+        fontWeight: 'bold',
+        color: '#999999'
     }
 });
 

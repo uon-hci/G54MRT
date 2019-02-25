@@ -6,10 +6,12 @@ import { Text } from 'react-native';
 import styles from './navigationStyle';
 
 /* Navigation */
-const navigation = (title) => () => ({
-    headerStyle: styles.header,
-    headerTintColor: styles.headerTint.color,
-    headerTitle: <Text style={styles.headerTitle}>{title}</Text>
-});
+const navigation = (title) => {
+    return {
+        headerStyle: styles.header,
+        headerTintColor: styles.headerTint.color,
+        headerTitle: <Text style={styles.headerTitle}>{title}</Text>
+    };
+};
 
 export default navigation;

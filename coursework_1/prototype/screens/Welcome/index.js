@@ -1,7 +1,6 @@
 /* Modules */
 import React from 'react';
 import { View, Image, ImageBackground, Text } from 'react-native';
-import Touch from '../../components/Touch';
 import Button from '../../components/Button';
 
 /* Style */
@@ -22,9 +21,9 @@ class Welcome extends React.Component {
                     <Text style={styles.subtitle}>Who will be the best?</Text>
                 </View>
                 <View style={styles.blank} />
-                <ImageBackground source={require('./img/bottom.png')} resizeMode='stretch' style={styles.bottom}>
+                <ImageBackground source={require('../../assets/images/bottom.png')} resizeMode='stretch' style={styles.bottom}>
                     <View style={styles.dinoContainer}>
-                        <Image style={styles.dino} resizeMode='contain' source={require('./img/dino.png')} />
+                        <Image style={styles.dino} resizeMode='contain' source={require('../../assets/images/dino.png')} />
                     </View>
                     <View style={styles.descriptionContainer}>
                         <Text style={styles.description}>Learn and have fun with this interactive museum experience</Text>

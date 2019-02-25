@@ -1,0 +1,26 @@
+{
+    "username": "",
+    "score": 0,
+    "levels": {
+        "birds": {
+            "locked": false,
+            "progress": 0
+        },
+        "insects": {
+            "locked": false,
+            "progress": 0
+        },
+        "dinosaurs": {
+            "locked": true
+        },
+        "africa": {
+            "locked": true
+        },
+        "minerals": {
+            "locked": true
+        },
+        "plants": {
+            "locked": true
+        }
+    }
+}

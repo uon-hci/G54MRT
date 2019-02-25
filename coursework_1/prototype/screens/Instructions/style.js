@@ -34,6 +34,12 @@ const styles = StyleSheet.create({
         fontSize: 23,
         maxWidth: 350,
         textAlign: 'center'
+    },
+    usernameInput: {
+        borderBottomColor: '#666666',
+        borderBottomWidth: 2,
+        width: 200,
+        textAlign: 'center'
     }
 });
 

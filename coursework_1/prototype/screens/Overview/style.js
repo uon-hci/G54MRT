@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
     },
     levels: {
         flex: 20,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingLeft: 20,
+        paddingRight: 20
     },
     levelColumn: {
         alignItems: 'center'

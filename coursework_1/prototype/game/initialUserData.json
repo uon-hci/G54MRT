@@ -11,16 +11,20 @@
             "progress": 0
         },
         "dinosaurs": {
-            "locked": true
+            "locked": true,
+            "progress": 0
         },
         "africa": {
-            "locked": true
+            "locked": true,
+            "progress": 0
         },
         "minerals": {
-            "locked": true
+            "locked": true,
+            "progress": 0
         },
         "plants": {
-            "locked": true
+            "locked": true,
+            "progress": 0
         }
     }
 }

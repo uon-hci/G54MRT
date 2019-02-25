@@ -2,6 +2,5 @@
     "name": "dinosaurs",
     "total": 10,
     "questions": [],
-    "color": "green",
-    "icon": "level-birds.png"
+    "color": "#A2B373"
 }

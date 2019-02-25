@@ -16,11 +16,11 @@ import styles from './style';
 class Instructions extends React.Component {
 
     state = { username: '' };
-    static navigationOptions = navigation('Instructions');
+    static navigationOptions = navigation('instructions');
 
     toGame = async () => {
         const username = this.state.username;
-        if (username.length > 2) {
+        if (username.length > 2 && username.length < 15) {
             try {
                 initialUserData.username = username;
                 // await AsyncStorage.clear();
@@ -29,7 +29,7 @@ class Instructions extends React.Component {
                 if (!userData) {
                     await AsyncStorage.setItem(username, JSON.stringify(initialUserData));
                 }
-                this.props.navigation.navigate('Overview', { username });
+                this.props.navigation.navigate('Overview', { username: username.toLowerCase() });
             } catch (err) {
                 console.log(err);
             }

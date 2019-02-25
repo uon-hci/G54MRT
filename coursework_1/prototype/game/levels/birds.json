@@ -2,6 +2,5 @@
     "name": "birds",
     "total": 5,
     "questions": [],
-    "color": "#BEE6F6",
-    "icon": "level-birds.png"
+    "color": "#BEE6F6"
 }

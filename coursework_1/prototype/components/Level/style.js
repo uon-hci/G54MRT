@@ -14,10 +14,15 @@ const styles = StyleSheet.create({
         width: 150,
         height: 150,
         borderRadius: 100,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     icon: {
-        height: 80
+        height: 70,
+        width: 90
+    },
+    iconLocked: {
+        height: 50
     },
     name: {
         paddingTop: 10,
@@ -25,13 +30,16 @@ const styles = StyleSheet.create({
         color: '#666666',
         fontSize: 18
     },
+    nameLocked: {
+        color: '#CCCCCC'
+    },
     progress: {
         fontWeight: 'bold',
         color: '#46AF64'
     },
     locked: {
         fontWeight: 'bold',
-        color: '#999999'
+        color: '#CCCCCC'
     }
 });
 

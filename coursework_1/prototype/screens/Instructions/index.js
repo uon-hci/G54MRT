@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, Image, TextInput, AsyncStorage } from 'react-native';
 import Button from '../../components/Button';
 import initialUserData from '../../game/initialUserData';
+import storage from '../storage';
 
 /* Navigation */
 import navigation from '../navigation';
@@ -15,21 +16,15 @@ import styles from './style';
  */
 class Instructions extends React.Component {
 
-    state = { username: '' };
     static navigationOptions = navigation('instructions');
+    state = { username: '' };
 
     toGame = async () => {
         const username = this.state.username;
         if (username.length > 2 && username.length < 15) {
             try {
-                initialUserData.username = username;
-                // await AsyncStorage.clear();
-                await AsyncStorage.setItem('currentUsername', username);
-                const userData = await AsyncStorage.getItem(username);
-                if (!userData) {
-                    await AsyncStorage.setItem(username, JSON.stringify(initialUserData));
-                }
-                this.props.navigation.navigate('Overview', { username: username.toLowerCase() });
+                await storage.newUser(username);
+                this.props.navigation.navigate('Overview');
             } catch (err) {
                 console.log(err);
             }

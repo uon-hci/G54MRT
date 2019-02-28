@@ -4,9 +4,10 @@ import { View, Text, Image, AsyncStorage } from 'react-native';
 import initialUserData from '../../game/initialUserData';
 import Level from '../../components/Level';
 import { levels } from '../../game/levels';
+import storage from '../storage';
 
 /* Navigation */
-import myNavigation from '../navigation';
+import navigation from '../navigation';
 
 /* Style */
 import styles from './style';
@@ -15,17 +16,33 @@ import styles from './style';
  * Overview
  */
 class Overview extends React.Component {
-    state = { userData: initialUserData };
-    static navigationOptions = ({ navigation }) => myNavigation(navigation.getParam('username'));
+    static navigationOptions = navigation('levels');
 
-    async componentDidMount() {
+    constructor(props) {
+        super(props);
+        this.state = { userData: initialUserData };
+        this.reRender = this.props.navigation.addListener('willFocus', () => {
+            this.updateUserData();
+        });
+    }
+
+    componentDidMount() {
+        this.reRender;
+    }
+
+    updateUserData = async () => {
         try {
-            const username = await AsyncStorage.getItem('currentUsername');
-            const userData = await AsyncStorage.getItem(username);
-            this.setState({ userData: JSON.parse(userData) });
+            const userData = await storage.getUserData();
+            this.setState({ userData });
         } catch(err) {
             console.log(err);
         }
+    }
+
+    toQuestion = async (levelName) => {
+        const progress = await storage.getUserProgress(levelName);
+        const question = storage.getQuestion(levelName, progress);
+        this.props.navigation.navigate('Question', { level: levelName, question: question });
     }
 
     render() {
@@ -38,19 +55,22 @@ class Overview extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.score}><Text style={styles.bold}>{score}</Text> points</Text>
                 <View style={styles.levels}>
+                    {/* TODO: 1 component LevelColumn */}
                     <View style={[styles.levelColumn, styles.leftLevels]}>
                         { leftLevels.map(level => <Level key={level} 
                             navigation = {this.props.navigation}
                             name={level} 
                             userProgress={userData.levels[level].progress} 
-                            locked={userData.levels[level].locked} />)}
+                            locked={userData.levels[level].locked} 
+                            toLevel={this.toQuestion} />)}
                     </View>
                     <View style={[styles.levelColumn, styles.rightLevels]}>
                         { rightLevels.map(level => <Level key={level} 
                             navigation = {this.props.navigation}
                             name={level} 
                             userProgress={userData.levels[level].progress} 
-                            locked={userData.levels[level].locked}/>)}
+                            locked={userData.levels[level].locked}
+                            toLevel={this.toQuestion} />)}
                     </View>
                 </View>
             </View>

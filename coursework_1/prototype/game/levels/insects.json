@@ -4,7 +4,8 @@
     "questions": [
         {
             "question": "What is the name of this insect?",
-            "answer": "butterfly"
+            "answer": "butterfly",
+            "points": 2
         }
     ],
     "color": "#FCCE70"

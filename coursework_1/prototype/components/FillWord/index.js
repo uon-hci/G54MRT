@@ -16,6 +16,10 @@ class FillWord extends React.Component {
         this.state = { attempt: [], scramble: this.scrambleWord(props.word), won: false };
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({ scramble: this.scrambleWord(nextProps.word) });
+    }
+
     scrambleWord = (word) => {
         return word.replace('-', '').split('').sort(() => 0.5 - Math.random());
     }
@@ -23,7 +27,7 @@ class FillWord extends React.Component {
     isWon = () => {
         const word = this.props.word.replace('-', '');
         const attempt = this.state.attempt.join('');
-        this.setState({ won: attempt == word });
+        return word == attempt;
     }
 
     handleAttemptTouch = (index) => {
@@ -41,8 +45,13 @@ class FillWord extends React.Component {
         let { attempt, scramble } = this.state;
         attempt.push(scramble[index]);
         scramble[index] = '';
-        this.setState({ attempt, scramble });
-        this.isWon();
+        this.setState({ attempt, scramble, won: this.isWon() });
+        if (this.isWon()) {
+            setTimeout(() => {
+                this.setState({ attempt: [], won: false });
+                this.props.onWin();
+            }, 500);
+        }
     }
 
     mapAttempt = () => {

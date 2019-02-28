@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
     containerWon: {
         backgroundColor: '#46AF64',
-        borderColor: 'white'
+        borderColor: '#666666'
     },
     hyphen: {
         fontSize: 25,

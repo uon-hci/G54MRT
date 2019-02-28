@@ -1,10 +1,8 @@
 /* Modules */
 import React from 'react';
 import { View, Text, Image, AsyncStorage } from 'react-native';
-import Button from '../../components/Button';
-import initialUserData from '../../game/initialUserData';
-import { levels } from '../../game/levels';
 import FillWord from '../../components/FillWord'
+import storage from '../storage';
 
 /* Navigation */
 import myNavigation from '../navigation';
@@ -16,35 +14,27 @@ import styles from './style';
  * Question
  */
 class Question extends React.Component {
-    state = { userData: initialUserData };
     static navigationOptions = ({ navigation }) => myNavigation(navigation.getParam('level'));
 
-    async componentDidMount() {
-        try {
-            const username = await AsyncStorage.getItem('currentUsername');
-            const userData = await AsyncStorage.getItem(username);
-            this.setState({ userData: JSON.parse(userData) });
-        } catch(err) {
-            console.log(err);
-        }
+    toCorrectAnswer = () => {
+        const levelName = this.props.navigation.getParam('level');
+        const { points } = this.props.navigation.getParam('question');
+        this.props.navigation.navigate('CorrectAnswer', { level: levelName, points: points });
     }
 
     render() {
         const levelName = this.props.navigation.getParam('level');
-        const userProgress = this.state.userData.levels[levelName].progress;
-        const level = levels[levelName];
-        const levelQuestion = level.questions[userProgress];
-        const question = levelQuestion.question;
-        const answer = levelQuestion.answer;
+        const question = this.props.navigation.getParam('question');
+        const level = storage.getLevel(levelName);
         return (
             <View style={styles.container}>
-                <Text style={styles.progress}>Question {userProgress + 1}</Text>
+                <Text style={styles.progress}>Question {question.id}</Text>
                 <View style={styles.top}>
                     <View style={styles.picture} />
-                    <Text style={styles.question}>{question}</Text>
+                    <Text style={styles.question}>{question.question}</Text>
                 </View>
                 <View style={[styles.bottom, { backgroundColor: level.color }]}>
-                    <FillWord word={answer} />
+                    <FillWord word={question.answer} onWin={this.toCorrectAnswer} />
                 </View>
             </View>
         );

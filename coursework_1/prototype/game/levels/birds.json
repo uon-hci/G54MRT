@@ -3,8 +3,16 @@
     "total": 5,
     "questions": [
         {
+            "id": 1,
             "question": "What is the name of that sea-eagle?",
-            "answer": "white-bellied"
+            "answer": "white-bellied",
+            "points": 5
+        },
+        {
+            "id": 2,
+            "question": "What is the name of that sea-eagle?",
+            "answer": "veryhardname",
+            "points": 15
         }
     ],
     "color": "#BEE6F6"

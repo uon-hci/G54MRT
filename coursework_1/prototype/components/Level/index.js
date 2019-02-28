@@ -16,9 +16,9 @@ class Level extends React.Component {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    goLevel = () => {
+    handleTouch = () => {
         if (!this.props.locked) {
-            this.props.navigation.navigate('Question', { level: this.props.name });
+            this.props.toLevel(this.props.name);
         }
     }
     
@@ -30,7 +30,7 @@ class Level extends React.Component {
         const progress = userProgress / level.total * 100;
         const Progress = () => locked ? <Text style={styles.locked}>LOCKED</Text> : <Text style={styles.progress}>{progress}%</Text>;
         return (
-            <Touch onPress={this.goLevel}>
+            <Touch onPress={this.handleTouch}>
                 <View style={styles.container}>
                     <View style={[styles.picture, { backgroundColor: color }]}>
                         <Image style={[styles.icon, locked && styles.iconLocked]} resizeMode='contain' source={icon} />

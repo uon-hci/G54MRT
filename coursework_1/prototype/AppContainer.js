@@ -6,6 +6,7 @@ import Welcome from "./screens/Welcome";
 import Instructions from "./screens/Instructions";
 import Overview from "./screens/Overview";
 import Question from "./screens/Question";
+import CorrectAnswer from "./screens/CorrectAnswer";
 
 /* Navigator */
 const Navigator = createStackNavigator(
@@ -18,7 +19,13 @@ const Navigator = createStackNavigator(
         },
         Instructions,
         Overview,
-        Question
+        Question,
+        CorrectAnswer: {
+            screen: CorrectAnswer,
+            navigationOptions: {
+                header: null
+            }
+        }
     }, 
     {
         initialRouteName: 'Welcome',

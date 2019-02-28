@@ -1,5 +1,7 @@
 /* Modules */
-import { StyleSheet } from 'react-native';
+import { StyleSheet, PixelRatio } from 'react-native';
+
+const fontSize = PixelRatio.get() <= 2 ? 20 : 23;
 
 /* Stylesheet*/
 const styles = StyleSheet.create({
@@ -26,13 +28,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     castle: {
-        height: 180
+        height: 150,
     },
     instruction: {
         fontFamily: 'kiddish',
         color: '#666666',
-        fontSize: 23,
-        maxWidth: 350,
+        fontSize: fontSize,
+        maxWidth: '80%',
         textAlign: 'center'
     },
     usernameInput: {

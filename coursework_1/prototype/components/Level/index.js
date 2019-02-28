@@ -18,7 +18,7 @@ class Level extends React.Component {
 
     goLevel = () => {
         if (!this.props.locked) {
-            console.log('going level', this.props.name);
+            this.props.navigation.navigate('Question', { level: this.props.name });
         }
     }
     

@@ -5,6 +5,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import Welcome from "./screens/Welcome";
 import Instructions from "./screens/Instructions";
 import Overview from "./screens/Overview";
+import Question from "./screens/Question";
 
 /* Navigator */
 const Navigator = createStackNavigator(
@@ -16,7 +17,8 @@ const Navigator = createStackNavigator(
             }
         },
         Instructions,
-        Overview
+        Overview,
+        Question
     }, 
     {
         initialRouteName: 'Welcome',

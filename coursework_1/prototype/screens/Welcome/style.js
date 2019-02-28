@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
     },
     dinoContainer: {
         position: 'absolute',
-        top: -135,
+        top: -125,
         left: 0,
         right: 0,
         justifyContent: 'center',
         alignItems: 'center'
     },
     dino: {
-        height: 150
+        height: 135
     },
     bottom: {
         flex: 3,

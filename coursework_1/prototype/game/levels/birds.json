@@ -1,6 +1,11 @@
 {
     "name": "birds",
     "total": 5,
-    "questions": [],
+    "questions": [
+        {
+            "question": "What is the name of that sea-eagle?",
+            "answer": "white-bellied"
+        }
+    ],
     "color": "#BEE6F6"
 }

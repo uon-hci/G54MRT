@@ -39,10 +39,18 @@ class Overview extends React.Component {
                 <Text style={styles.score}><Text style={styles.bold}>{score}</Text> points</Text>
                 <View style={styles.levels}>
                     <View style={[styles.levelColumn, styles.leftLevels]}>
-                        { leftLevels.map(level => <Level key={level} name={level} userProgress={userData.levels[level].progress} locked={userData.levels[level].locked} />)}
+                        { leftLevels.map(level => <Level key={level} 
+                            navigation = {this.props.navigation}
+                            name={level} 
+                            userProgress={userData.levels[level].progress} 
+                            locked={userData.levels[level].locked} />)}
                     </View>
                     <View style={[styles.levelColumn, styles.rightLevels]}>
-                        { rightLevels.map(level => <Level key={level} name={level} userProgress={userData.levels[level].progress} locked={userData.levels[level].locked}/>)}
+                        { rightLevels.map(level => <Level key={level} 
+                            navigation = {this.props.navigation}
+                            name={level} 
+                            userProgress={userData.levels[level].progress} 
+                            locked={userData.levels[level].locked}/>)}
                     </View>
                 </View>
             </View>

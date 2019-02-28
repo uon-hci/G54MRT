@@ -1,6 +1,11 @@
 {
     "name": "insects",
     "total": 8,
-    "questions": [],
+    "questions": [
+        {
+            "question": "What is the name of this insect?",
+            "answer": "butterfly"
+        }
+    ],
     "color": "#FCCE70"
 }

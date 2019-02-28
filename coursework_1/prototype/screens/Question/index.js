@@ -35,6 +35,7 @@ class Question extends React.Component {
         const level = levels[levelName];
         const levelQuestion = level.questions[userProgress];
         const question = levelQuestion.question;
+        const answer = levelQuestion.answer;
         return (
             <View style={styles.container}>
                 <Text style={styles.progress}>Question {userProgress + 1}</Text>
@@ -43,7 +44,7 @@ class Question extends React.Component {
                     <Text style={styles.question}>{question}</Text>
                 </View>
                 <View style={[styles.bottom, { backgroundColor: level.color }]}>
-                    <FillWord word='white-bellied' />
+                    <FillWord word={answer} />
                 </View>
             </View>
         );

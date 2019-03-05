@@ -4,27 +4,33 @@
     "levels": {
         "birds": {
             "locked": false,
-            "progress": 0
+            "progress": 0,
+            "complete": false
         },
         "insects": {
             "locked": false,
-            "progress": 0
+            "progress": 0,
+            "complete": false
         },
         "dinosaurs": {
             "locked": true,
-            "progress": 0
+            "progress": 0,
+            "complete": false
         },
         "africa": {
             "locked": true,
-            "progress": 0
+            "progress": 0,
+            "complete": false
         },
         "minerals": {
             "locked": true,
-            "progress": 0
+            "progress": 0,
+            "complete": false
         },
         "plants": {
             "locked": true,
-            "progress": 0
+            "progress": 0,
+            "complete": false
         }
     }
 }

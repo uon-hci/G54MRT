@@ -18,15 +18,19 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     picture: {
-        width: 200,
-        height: 200,
+        width: 195,
+        height: 195,
         backgroundColor: '#666666',
-        borderRadius: 100
+        borderRadius: 100,
+        borderColor: '#666666',
+        borderWidth: 5
     },
     question: {
         fontFamily: 'kiddish',
         color: '#666666',
-        fontSize: 20
+        fontSize: 20,
+        maxWidth: '80%',
+        textAlign: 'center'
     },
     bottom: {
         flex: 1,

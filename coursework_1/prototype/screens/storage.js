@@ -31,7 +31,13 @@ const addCorrectAnswer = async(levelName) => {
     userData.levels[levelName].progress++;
     userData.score += question.points;
     await AsyncStorage.setItem(userData.username, JSON.stringify(userData));
-    return question.points;
+    return { wonPoints: question.points, newProgress: userProgress + 1 };
+}
+
+const completeLevel = async(levelName) => {
+    let userData = await getUserData();
+    userData.levels[levelName].complete = true;
+    await AsyncStorage.setItem(userData.username, JSON.stringify(userData));
 }
 
 /**
@@ -88,5 +94,6 @@ export default {
     getQuestion,
     getLevel,
     addCorrectAnswer,
-    getUsername
+    getUsername,
+    completeLevel
 };

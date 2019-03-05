@@ -62,6 +62,7 @@ class Overview extends React.Component {
                             name={level} 
                             userProgress={userData.levels[level].progress} 
                             locked={userData.levels[level].locked} 
+                            complete={userData.levels[level].complete} 
                             toLevel={this.toQuestion} />)}
                     </View>
                     <View style={[styles.levelColumn, styles.rightLevels]}>
@@ -70,6 +71,7 @@ class Overview extends React.Component {
                             name={level} 
                             userProgress={userData.levels[level].progress} 
                             locked={userData.levels[level].locked}
+                            complete={userData.levels[level].complete} 
                             toLevel={this.toQuestion} />)}
                     </View>
                 </View>

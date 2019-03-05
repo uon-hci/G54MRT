@@ -1,18 +1,20 @@
 {
     "name": "birds",
-    "total": 5,
+    "total": 2,
     "questions": [
         {
             "id": 1,
-            "question": "What is the name of that sea-eagle?",
-            "answer": "white-bellied",
-            "points": 5
+            "question": "What is the name of that eagle?",
+            "answer": "white-tailed",
+            "points": 5,
+            "image": "white-tailed-eagle"
         },
         {
             "id": 2,
-            "question": "What is the name of that sea-eagle?",
-            "answer": "veryhardname",
-            "points": 15
+            "question": "Where can we find the Cormorant in Nottingham?",
+            "answer": "trent river",
+            "points": 15,
+            "image": "cormorant"
         }
     ],
     "color": "#BEE6F6"

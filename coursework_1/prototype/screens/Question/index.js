@@ -1,8 +1,9 @@
 /* Modules */
 import React from 'react';
-import { View, Text, Image, AsyncStorage } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import FillWord from '../../components/FillWord'
 import storage from '../storage';
+import { requireQuestionImage } from '../../game/levels';
 
 /* Navigation */
 import myNavigation from '../navigation';
@@ -24,13 +25,14 @@ class Question extends React.Component {
 
     render() {
         const levelName = this.props.navigation.getParam('level');
-        const question = this.props.navigation.getParam('question');
         const level = storage.getLevel(levelName);
+        const question = this.props.navigation.getParam('question');
+        const image = requireQuestionImage(question.image);
         return (
             <View style={styles.container}>
                 <Text style={styles.progress}>Question {question.id}</Text>
                 <View style={styles.top}>
-                    <View style={styles.picture} />
+                    <Image style={styles.picture} resizeMode='cover' source={image} />
                     <Text style={styles.question}>{question.question}</Text>
                 </View>
                 <View style={[styles.bottom, { backgroundColor: level.color }]}>

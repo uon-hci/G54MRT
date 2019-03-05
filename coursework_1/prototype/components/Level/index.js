@@ -17,7 +17,7 @@ class Level extends React.Component {
     }
 
     handleTouch = () => {
-        if (!this.props.locked) {
+        if (!this.props.locked && !this.props.complete) {
             this.props.toLevel(this.props.name);
         }
     }

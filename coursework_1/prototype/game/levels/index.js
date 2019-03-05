@@ -5,7 +5,7 @@ import dinosaurs from './dinosaurs';
 import africa from './africa';
 import plants from './plants';
 
-/* Require */
+/* Require level icon */
 export const requireLevelIcon = (name) => {
     switch (name) {
         case 'birds':
@@ -20,6 +20,18 @@ export const requireLevelIcon = (name) => {
             return require('../../assets/images/level-plants.png');
         case 'locked':
             return require('../../assets/images/level-locked.png');
+        default:
+            return null;
+    }
+}
+
+/* Require question image */
+export const requireQuestionImage = (name) => {
+    switch (name) {
+        case 'white-tailed-eagle':
+            return require('../../assets/images/birds-white-tailed-eagle.jpg');
+        case 'cormorant':
+            return require('../../assets/images/birds-cormorant.jpg');
         default:
             return null;
     }

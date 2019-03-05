@@ -21,11 +21,11 @@ class FillWord extends React.Component {
     }
 
     scrambleWord = (word) => {
-        return word.replace('-', '').split('').sort(() => 0.5 - Math.random());
+        return word.replace('-', '').replace(' ', '').split('').sort(() => 0.5 - Math.random());
     }
 
     isWon = () => {
-        const word = this.props.word.replace('-', '');
+        const word = this.props.word.replace('-', '').replace(' ', '');
         const attempt = this.state.attempt.join('');
         return word == attempt;
     }
@@ -59,10 +59,13 @@ class FillWord extends React.Component {
         const { attempt, won } = this.state;
         let i = 0;
         return word.split('').map((letter, index) => {
-            if (letter != '-') {
-                return <Letter type='attempt' handleAttemptTouch={this.handleAttemptTouch} index={i} key={index} letter={attempt[i++]} won={won} />
-            } else {
-                return <Text key={index} style={styles.hyphen}>-</Text>
+            switch (letter) {
+                case '-':
+                    return <Text key={index} style={styles.hyphen}>-</Text>;
+                case ' ':
+                    return <Text key={index} style={styles.hyphen}> </Text>;
+                default: 
+                    return <Letter type='attempt' handleAttemptTouch={this.handleAttemptTouch} index={i} key={index} letter={attempt[i++]} won={won} />;
             }
         });
     }

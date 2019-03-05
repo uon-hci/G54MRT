@@ -14,34 +14,43 @@ import styles from './style';
  * CorrectAnswer
  */
 class CorrectAnswer extends React.Component {
-    state = { wonPoints: 0 };
+    state = { wonPoints: 0, complete: false };
     static navigationOptions = navigation('answer');
 
     async componentDidMount() {
         const levelName = this.props.navigation.getParam('level');
-        try {
-            const wonPoints = await storage.addCorrectAnswer(levelName);
-            this.setState({ wonPoints });
-        } catch(err) {
-            console.log(err);
+        const { wonPoints, newProgress } = await storage.addCorrectAnswer(levelName);
+        const level = storage.getLevel(levelName);
+        let complete = false;
+        if (level.total == newProgress) {
+            complete = true;
+            await storage.completeLevel(levelName);
         }
+        this.setState({ wonPoints, complete });
     }
 
-    toOverview = async () => {
+    toOverview = () => {
+        this.props.navigation.navigate('Overview');
+    }
+
+    toNextQuestion = async () => {
         const levelName = this.props.navigation.getParam('level');
-        // this.props.navigation.navigate('Overview');
         const progress = await storage.getUserProgress(levelName);
         const question = storage.getQuestion(levelName, progress);
         this.props.navigation.navigate('Question', { level: levelName, question: question });
     }
 
     render() {
-        const { wonPoints } = this.state;
+        const levelName = this.props.navigation.getParam('level');
+        const { wonPoints, complete } = this.state;
+        const CompleteText = () => complete ? <Text style={styles.message}>You finished the {levelName} level! Bravo.</Text> : null;
+        const navigate = complete ? this.toOverview : this.toNextQuestion;
         return (
             <View style={styles.container}>
                 <Text style={styles.message}>Correct!</Text>
                 <Text style={styles.points}>+{ wonPoints } points</Text>
-                <Button onPress={this.toOverview} color='dark' text=' CONTINUE ' />
+                <CompleteText />
+                <Button onPress={navigate} color='dark' text=' CONTINUE ' />
             </View>
         );
     }

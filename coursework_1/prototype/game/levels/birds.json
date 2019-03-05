@@ -1,6 +1,6 @@
 {
     "name": "birds",
-    "total": 2,
+    "total": 3,
     "questions": [
         {
             "id": 1,
@@ -15,6 +15,13 @@
             "answer": "trent river",
             "points": 15,
             "image": "cormorant"
+        },
+        {
+            "id": 3,
+            "question": "What is an other name for the Shoebill?",
+            "answer": "whale-headed-stork",
+            "points": 15,
+            "image": "shoebill"
         }
     ],
     "color": "#BEE6F6"

@@ -34,9 +34,22 @@ const addCorrectAnswer = async(levelName) => {
     return { wonPoints: question.points, newProgress: userProgress + 1 };
 }
 
+/**
+ * Sets a level to complete for current user
+ * @param {string} levelName
+ */
 const completeLevel = async(levelName) => {
     let userData = await getUserData();
     userData.levels[levelName].complete = true;
+    await AsyncStorage.setItem(userData.username, JSON.stringify(userData));
+    await checkUnlock();
+}
+
+const checkUnlock = async() => {
+    let userData = await getUserData();
+    if (userData.levels.birds.complete) { userData.levels.dinosaurs.locked = false; }
+    if (userData.levels.insects.complete) { userData.levels.africa.locked = false; }
+    if (userData.levels.africa.complete) { userData.levels.plants.locked = false; }
     await AsyncStorage.setItem(userData.username, JSON.stringify(userData));
 }
 

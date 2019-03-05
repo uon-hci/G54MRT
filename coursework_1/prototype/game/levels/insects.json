@@ -1,11 +1,13 @@
 {
     "name": "insects",
-    "total": 8,
+    "total": 1,
     "questions": [
         {
+            "id": 1,
             "question": "What is the name of this insect?",
-            "answer": "butterfly",
-            "points": 2
+            "answer": "bird-eating",
+            "points": 15,
+            "image": "bird-eating-spider"
         }
     ],
     "color": "#FCCE70"

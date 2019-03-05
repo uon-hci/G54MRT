@@ -27,7 +27,7 @@ class Level extends React.Component {
         const level = levels[name];
         const color = locked ? '#CCCCCC' : level.color;
         const icon = locked ? requireLevelIcon('locked') : requireLevelIcon(name);
-        const progress = userProgress / level.total * 100;
+        const progress = Math.round(userProgress / level.total * 100);
         const Progress = () => locked ? <Text style={styles.locked}>LOCKED</Text> : <Text style={styles.progress}>{progress}%</Text>;
         return (
             <Touch onPress={this.handleTouch}>

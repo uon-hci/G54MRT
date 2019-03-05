@@ -13,19 +13,27 @@ class FillWord extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { attempt: [], scramble: this.scrambleWord(props.word), won: false };
+        word = this.replaceAll(this.props.word, '-', '');
+        word = this.replaceAll(word, ' ', '');
+        this.state = { attempt: [], scramble: this.scrambleWord(word), won: false, word };
+    }
+
+    replaceAll = (str, find, replace) => {
+        return str.replace(new RegExp(find, 'g'), replace);
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ scramble: this.scrambleWord(nextProps.word) });
+        word = this.replaceAll(nextProps.word, '-', '');
+        word = this.replaceAll(word, ' ', '');
+        this.setState({ scramble: this.scrambleWord(word), word });
     }
 
     scrambleWord = (word) => {
-        return word.replace('-', '').replace(' ', '').split('').sort(() => 0.5 - Math.random());
+        return word.split('').sort(() => 0.5 - Math.random());
     }
 
     isWon = () => {
-        const word = this.props.word.replace('-', '').replace(' ', '');
+        const { word } = this.state;
         const attempt = this.state.attempt.join('');
         return word == attempt;
     }
@@ -83,7 +91,7 @@ class FillWord extends React.Component {
                 <View style={styles.attempt}>
                     { this.mapAttempt() }
                 </View>
-                <View style={styles.attempt}>
+                <View style={styles.scramble}>
                     { this.mapScramble() }
                 </View>
             </View>

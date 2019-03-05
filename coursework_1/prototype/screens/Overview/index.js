@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, Image, AsyncStorage } from 'react-native';
 import initialUserData from '../../game/initialUserData';
 import Level from '../../components/Level';
+import LevelColumn from './LevelColumn';
 import { levels } from '../../game/levels';
 import storage from '../storage';
 
@@ -55,25 +56,8 @@ class Overview extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.score}><Text style={styles.bold}>{score}</Text> points</Text>
                 <View style={styles.levels}>
-                    {/* TODO: 1 component LevelColumn */}
-                    <View style={[styles.levelColumn, styles.leftLevels]}>
-                        { leftLevels.map(level => <Level key={level} 
-                            navigation = {this.props.navigation}
-                            name={level} 
-                            userProgress={userData.levels[level].progress} 
-                            locked={userData.levels[level].locked} 
-                            complete={userData.levels[level].complete} 
-                            toLevel={this.toQuestion} />)}
-                    </View>
-                    <View style={[styles.levelColumn, styles.rightLevels]}>
-                        { rightLevels.map(level => <Level key={level} 
-                            navigation = {this.props.navigation}
-                            name={level} 
-                            userProgress={userData.levels[level].progress} 
-                            locked={userData.levels[level].locked}
-                            complete={userData.levels[level].complete} 
-                            toLevel={this.toQuestion} />)}
-                    </View>
+                    <LevelColumn levels={leftLevels} type='left' userData={userData} toQuestion={this.toQuestion} />
+                    <LevelColumn levels={rightLevels} type='right' userData={userData} toQuestion={this.toQuestion} />
                 </View>
             </View>
         );

@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        maxWidth: '90%'
+        maxWidth: '90%',
+        alignContent: 'center'
     },
     scramble: {
         flex: 1,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        maxWidth: '60%'
+        maxWidth: '80%'
     },
     letterContainerAttempt: {
         width: 25,

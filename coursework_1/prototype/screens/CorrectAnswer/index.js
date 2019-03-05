@@ -43,7 +43,7 @@ class CorrectAnswer extends React.Component {
     render() {
         const levelName = this.props.navigation.getParam('level');
         const { wonPoints, complete } = this.state;
-        const CompleteText = () => complete ? <Text style={styles.message}>You finished the {levelName} level! Bravo.</Text> : null;
+        const CompleteText = () => complete ? <Text style={styles.message}>{levelName} level complete!</Text> : null;
         const navigate = complete ? this.toOverview : this.toNextQuestion;
         return (
             <View style={styles.container}>

@@ -9,9 +9,17 @@
             "type": "digital",
             "port": 8
         },
-        "sound":  {
+        "sound": {
             "type": "analog",
             "port": 0
+        },
+        "accelerometer": {
+            "type": "i2c",
+            "port": 2
+        },
+        "light": {
+            "type": "analog",
+            "port": 1
         }
     }
 }

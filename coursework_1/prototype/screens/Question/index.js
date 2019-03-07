@@ -4,6 +4,7 @@ import { View, Text, Image } from 'react-native';
 import FillWord from '../../components/FillWord'
 import storage from '../storage';
 import { requireQuestionImage } from '../../game/levels';
+import QRCodeScanner from '../../components/QRCodeScanner';
 
 /* Navigation */
 import myNavigation from '../navigation';
@@ -28,6 +29,9 @@ class Question extends React.Component {
         const level = storage.getLevel(levelName);
         const question = this.props.navigation.getParam('question');
         const image = requireQuestionImage(question.image);
+        const UserInput = () => question.qrcode 
+            ? <QRCodeScanner answer={question.answer} onWin={this.toCorrectAnswer} /> 
+            : <FillWord word={question.answer} onWin={this.toCorrectAnswer} />;
         return (
             <View style={styles.container}>
                 <Text style={styles.progress}>Question {question.id}</Text>
@@ -36,7 +40,7 @@ class Question extends React.Component {
                     <Text style={styles.question}>{question.question}</Text>
                 </View>
                 <View style={[styles.bottom, { backgroundColor: level.color }]}>
-                    <FillWord word={question.answer} onWin={this.toCorrectAnswer} />
+                    <UserInput />
                 </View>
             </View>
         );

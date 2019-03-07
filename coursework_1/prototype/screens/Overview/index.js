@@ -2,7 +2,6 @@
 import React from 'react';
 import { View, Text, Image, AsyncStorage } from 'react-native';
 import initialUserData from '../../game/initialUserData';
-import Level from '../../components/Level';
 import LevelColumn from './LevelColumn';
 import { levels } from '../../game/levels';
 import storage from '../storage';

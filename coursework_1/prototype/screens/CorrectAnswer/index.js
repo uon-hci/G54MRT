@@ -29,6 +29,10 @@ class CorrectAnswer extends React.Component {
         this.setState({ wonPoints, complete });
     }
 
+    capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     toOverview = () => {
         this.props.navigation.navigate('Overview');
     }
@@ -43,7 +47,7 @@ class CorrectAnswer extends React.Component {
     render() {
         const levelName = this.props.navigation.getParam('level');
         const { wonPoints, complete } = this.state;
-        const CompleteText = () => complete ? <Text style={styles.message}>{levelName} level complete!</Text> : null;
+        const CompleteText = () => complete ? <Text style={styles.message}>{this.capitalize(levelName)} level complete!</Text> : null;
         const navigate = complete ? this.toOverview : this.toNextQuestion;
         return (
             <View style={styles.container}>

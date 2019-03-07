@@ -1,27 +1,38 @@
 {
     "name": "birds",
-    "total": 3,
+    "total": 4,
     "questions": [
         {
             "id": 1,
             "question": "What is the name of that eagle?",
             "answer": "white-tailed",
             "points": 5,
-            "image": "white-tailed-eagle"
+            "image": "white-tailed-eagle",
+            "qrcode": false
         },
         {
             "id": 2,
             "question": "Where can we find the Cormorant in Nottingham?",
             "answer": "trent river",
             "points": 15,
-            "image": "cormorant"
+            "image": "cormorant",
+            "qrcode": false
         },
         {
             "id": 3,
             "question": "What is an other name for the Shoebill?",
             "answer": "whale-headed-stork",
             "points": 15,
-            "image": "shoebill"
+            "image": "shoebill",
+            "qrcode": false
+        },
+        {
+            "id": 4,
+            "question": " Can you find the Great Crested Grebe? ",
+            "answer": "great-crested-grebe",
+            "points": 30,
+            "image": "mystery-birds",
+            "qrcode": true
         }
     ],
     "color": "#BEE6F6"

@@ -36,6 +36,8 @@ export const requireQuestionImage = (name) => {
             return require('../../assets/images/shoebill.jpg');
         case 'bird-eating-spider':
             return require('../../assets/images/insects-bird-eating-spider.png');
+        case 'mystery-birds': 
+            return require('../../assets/images/mystery-birds.png');
         default:
             return null;
     }

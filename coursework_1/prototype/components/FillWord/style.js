@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     letterContainerAttempt: {
         width: 25,
         height: 25,
-        borderRadius: 8,
+        borderRadius: 4,
         backgroundColor: 'white',
         borderWidth: 2,
         borderColor: '#666666',

@@ -5,12 +5,12 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#F2F2F2',
-        alignItems: 'center',
         flex: 1
     },
     progress: {
         color: '#46AF64',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        alignSelf: 'center'
     },
     top: {
         flex: 1,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1,
         borderTopColor: '#666666',
         borderTopWidth: 15,
-        alignSelf: 'stretch'
+        justifyContent: 'center'
     }
 });
 

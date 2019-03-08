@@ -1,13 +1,30 @@
 {
     "name": "insects",
-    "total": 1,
+    "total": 3,
     "questions": [
         {
             "id": 1,
             "question": "What is the name of this insect?",
             "answer": "bird-eating",
             "points": 15,
-            "image": "bird-eating-spider"
+            "image": "bird-eating-spider",
+            "qrcode": false
+        },
+        {
+            "id": 2,
+            "question": " Can you find the Aphids? ",
+            "answer": "aphids",
+            "points": 20,
+            "image": "mystery-insects",
+            "qrcode": true
+        },
+        {
+            "id": 3,
+            "question": "How many different species of British Moth have been found in Wollaton Park?",
+            "answer": "330",
+            "points": 25,
+            "image": "british-moths",
+            "qrcode": false
         }
     ],
     "color": "#FCCE70"

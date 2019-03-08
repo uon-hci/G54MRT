@@ -33,11 +33,19 @@ export const requireQuestionImage = (name) => {
         case 'cormorant':
             return require('../../assets/images/birds-cormorant.jpg');
         case 'shoebill':
-            return require('../../assets/images/shoebill.jpg');
+            return require('../../assets/images/birds-shoebill.jpg');
         case 'bird-eating-spider':
             return require('../../assets/images/insects-bird-eating-spider.png');
+        case 'british-moths':
+            return require('../../assets/images/insects-british-moths.jpg');
+        case 'plesiosaurus':
+            return require('../../assets/images/dinosaurs-plesiosaurus.png');
         case 'mystery-birds': 
             return require('../../assets/images/mystery-birds.png');
+        case 'mystery-insects': 
+            return require('../../assets/images/mystery-insects.png');
+        case 'mystery-dinosaurs': 
+            return require('../../assets/images/mystery-dinosaurs.png');
         default:
             return null;
     }

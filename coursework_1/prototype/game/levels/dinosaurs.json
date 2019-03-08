@@ -1,6 +1,23 @@
 {
     "name": "dinosaurs",
-    "total": 10,
-    "questions": [],
+    "total": 2,
+    "questions": [
+        {
+            "id": 1,
+            "question": "To which dinosaur this skull belongs to?",
+            "answer": "plesiosaurus",
+            "points": 15,
+            "image": "plesiosaurus",
+            "qrcode": false
+        },
+        {
+            "id": 2,
+            "question": " Can you find a T-Rex tooth? ",
+            "answer": "t-rex-tooth",
+            "points": 20,
+            "image": "mystery-dinosaurs",
+            "qrcode": true
+        }
+    ],
     "color": "#A2B373"
 }

@@ -29,6 +29,9 @@ class FillWord extends React.Component {
     }
 
     scrambleWord = (word) => {
+        if (parseInt(word)) {
+            word += '1234567890'
+        }
         return word.split('').sort(() => 0.5 - Math.random());
     }
 

@@ -10,17 +10,17 @@ const styles = StyleSheet.create({
     score: {
         flex: 1,
         textAlign: 'center',
-        paddingTop: 5,
         color: '#46AF64'
     },
     bold: {
         fontWeight: 'bold'
     },
     levels: {
-        flex: 20,
+        flex: 1,
         flexDirection: 'row',
         paddingLeft: 20,
-        paddingRight: 20
+        paddingRight: 20,
+        paddingTop: 5
     },
     levelColumn: {
         alignItems: 'center'
@@ -30,6 +30,13 @@ const styles = StyleSheet.create({
     },
     rightLevels: {
         paddingTop: 80,
+        flex: 1
+    },
+    scrollContainer: {
+        flex: 20,
+        paddingTop: 20
+    },
+    scroll: {
         flex: 1
     }
 });

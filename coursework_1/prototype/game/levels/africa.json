@@ -1,6 +1,23 @@
 {
     "name": "africa",
-    "total": 6,
-    "questions": [],
+    "total": 2,
+    "questions": [
+        {
+            "id": 1,
+            "question": "What is the species of that ape?",
+            "answer": "orangutan",
+            "points": 30,
+            "image": "orangutan",
+            "qrcode": false
+        },
+        {
+            "id": 2,
+            "question": "What does Hippoptamus mean in Greek?",
+            "answer": "river horse",
+            "points": 80,
+            "image": "hippopotamus",
+            "qrcode": false
+        }
+    ],
     "color": "#998675"
 }

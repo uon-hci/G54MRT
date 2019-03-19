@@ -1,6 +1,6 @@
 /* Modules */
 import React from 'react';
-import { View, Text, Image, AsyncStorage } from 'react-native';
+import { ScrollView, View, Text, Image, AsyncStorage } from 'react-native';
 import initialUserData from '../../game/initialUserData';
 import LevelColumn from './LevelColumn';
 import { levels } from '../../game/levels';
@@ -54,9 +54,13 @@ class Overview extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.score}><Text style={styles.bold}>{score}</Text> points</Text>
-                <View style={styles.levels}>
-                    <LevelColumn levels={leftLevels} type='left' userData={userData} toQuestion={this.toQuestion} />
-                    <LevelColumn levels={rightLevels} type='right' userData={userData} toQuestion={this.toQuestion} />
+                <View style={styles.scrollContainer}>
+                    <ScrollView style={styles.scroll}>
+                        <View style={styles.levels}>
+                            <LevelColumn levels={leftLevels} type='left' userData={userData} toQuestion={this.toQuestion} />
+                            <LevelColumn levels={rightLevels} type='right' userData={userData} toQuestion={this.toQuestion} />
+                        </View>
+                    </ScrollView>
                 </View>
             </View>
         );

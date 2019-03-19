@@ -19,6 +19,13 @@ class Instructions extends React.Component {
     static navigationOptions = navigation('instructions');
     state = { username: '' };
 
+    async componentDidMount() {
+        const username = await storage.getUsername();
+        if (username) {
+            this.setState({ username });
+        }
+    }
+
     toGame = async () => {
         const username = this.state.username;
         if (username.length > 2 && username.length < 15) {
@@ -45,7 +52,7 @@ class Instructions extends React.Component {
                         all the missing information and learn incredible facts about the history of life on earth. Can you become
                         the best dective?
                     </Text>
-                    <TextInput style={styles.usernameInput} placeholder='Username' onChangeText={(username) => this.setState({ username })} />
+                    <TextInput style={styles.usernameInput} placeholder='Username' onChangeText={(username) => this.setState({ username })} defaultValue={this.state.username} />
                     <Button text='START INVESTIGATING' color='dark' onPress={this.toGame} />
                 </View>
             </View>

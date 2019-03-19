@@ -46,6 +46,10 @@ export const requireQuestionImage = (name) => {
             return require('../../assets/images/mystery-insects.png');
         case 'mystery-dinosaurs': 
             return require('../../assets/images/mystery-dinosaurs.png');
+        case 'hippopotamus':
+            return require('../../assets/images/africa-hippopotamus.jpg');
+        case 'orangutan':
+            return require('../../assets/images/africa-orangutan.jpg');
         default:
             return null;
     }

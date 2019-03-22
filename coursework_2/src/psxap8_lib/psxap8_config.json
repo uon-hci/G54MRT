@@ -6,20 +6,28 @@
     },
     "sensors": {
         "motion": {
+            "id": "S_01",
             "type": "digital",
-            "port": 8
+            "port": 8,
+            "interval": 0.5
         },
         "sound": {
+            "id": "S_02",
             "type": "analog",
-            "port": 0
+            "port": 0,
+            "interval": 1
         },
         "accelerometer": {
+            "id": "S_03",
             "type": "i2c",
-            "port": 2
+            "port": 2,
+            "interval": 0.1
         },
         "light": {
+            "id": "S_04",
             "type": "analog",
-            "port": 1
+            "port": 1,
+            "interval": 2
         }
     }
 }

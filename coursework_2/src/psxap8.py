@@ -1,9 +1,9 @@
 # Modules
-from psxap8_lib import index as myLib
+from psxap8_lib import utils
 import time
 
 # Init sensors
-sensors = myLib.initSensors()
+sensors = utils.initSensors()
 
 # Loop
 while True:

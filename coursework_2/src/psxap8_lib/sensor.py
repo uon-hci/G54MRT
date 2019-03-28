@@ -2,26 +2,23 @@ import grovepi
 import grove6axis
 import time
 from . import csv
-from tinydb import TinyDB
-
-# Database
-db = TinyDB('psxap8_db.json')
+from .db import db
 
 # Sensor
 class Sensor:
-    def __init__(self, id, name, port, interval):
+    def __init__(self, id, type, port, interval):
         self.id = id
-        self.name = name
+        self.type = type
         self.port = port
         self.interval = interval
         self.lastCapture = time.time()
-        if self.name == 'accelerometer':
+        if self.type == 'accelerometer':
             grove6axis.init6Axis()
     def capture(self):
         if self.lastCapture:
             now = time.time()
             if now - self.lastCapture >= self.interval:
-                print('capturing..', self.name)
+                print('capturing..', self.type)
                 data = self.read()
                 db.insert({
                     'id': self.id,
@@ -43,7 +40,7 @@ class DigitalSensor(Sensor):
 # I2C
 class I2CSensor(Sensor):
     def read(self):
-        if self.name == 'accelerometer':
+        if self.type == 'accelerometer':
             data = {}
             data['orientation'] = grove6axis.getOrientation()
             data['acceleration'] = grove6axis.getAccel()

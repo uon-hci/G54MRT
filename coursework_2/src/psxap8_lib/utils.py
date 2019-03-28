@@ -3,7 +3,11 @@ import json
 import grovepi
 import grove6axis
 import math
-from . import Sensor
+from .sensor import AnalogSensor
+from .sensor import DigitalSensor
+from .sensor import I2CSensor
+from .scenario import Comparison
+from .scenario import ThresholdRule
 
 def readConfig(path):
     with open(path) as f:
@@ -16,12 +20,15 @@ def initSensors():
     sensorsObjects = []
     for sensor, config in sensors.items():
         if config['type'] == 'analog':
-            sensorsObjects.append(Sensor.AnalogSensor(config['id'], sensor, config['port'], config['interval']))
+            sensorsObjects.append(AnalogSensor(config['id'], sensor, config['port'], config['interval']))
         elif config['type'] == 'digital':
-            sensorsObjects.append(Sensor.DigitalSensor(config['id'], sensor, config['port'], config['interval']))
+            sensorsObjects.append(DigitalSensor(config['id'], sensor, config['port'], config['interval']))
         else:
-            sensorsObjects.append(Sensor.I2CSensor(config['id'], sensor, config['port'], config['interval']))            
+            sensorsObjects.append(I2CSensor(config['id'], sensor, config['port'], config['interval']))            
     return sensorsObjects
+
+def initRules():
+    soundRule = ThresholdRule('sound', 'self', Comparison.SUP_EQUALS, 50)
 
 def isMoving(accelerometerData):
     if (isMoving.lastValue == None):

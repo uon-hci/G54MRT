@@ -15,17 +15,17 @@ class Sensor:
         if self.type == 'accelerometer':
             grove6axis.init6Axis()
     def capture(self):
-        if self.lastCapture:
-            now = time.time()
-            if now - self.lastCapture >= self.interval:
-                print('capturing..', self.type)
-                data = self.read()
-                db.insert({
-                    'id': self.id,
-                    'timestamp': now,
-                    'value': data
-                })
-                self.lastCapture = now
+        now = time.time()
+        if now - self.lastCapture >= self.interval:
+            # print('capturing..', self.type)
+            data = self.read()
+            db.insert({
+                'id': self.id,
+                'type': self.type,
+                'timestamp': now,
+                'value': data
+            })
+            self.lastCapture = now
 
 # Analog
 class AnalogSensor(Sensor):

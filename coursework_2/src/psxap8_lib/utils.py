@@ -3,11 +3,9 @@ import json
 import grovepi
 import grove6axis
 import math
-from .sensor import AnalogSensor
-from .sensor import DigitalSensor
-from .sensor import I2CSensor
-from .scenario import Comparison
-from .scenario import ThresholdRule
+import _thread
+from .sensor import AnalogSensor, DigitalSensor, I2CSensor
+from .scenario import Scenario, ThresholdRule, ProgressRule, Comparison
 
 def readConfig(path):
     with open(path) as f:
@@ -27,8 +25,10 @@ def initSensors():
             sensorsObjects.append(I2CSensor(config['id'], sensor, config['port'], config['interval']))            
     return sensorsObjects
 
-def initRules():
-    soundRule = ThresholdRule('sound', 'self', Comparison.SUP_EQUALS, 50)
+def initScenarios():
+    lightRule = ThresholdRule('light', Comparison.SUP_EQUALS, 700)
+    testScenario = Scenario('the light is on', 10, [lightRule])
+    return [testScenario]
 
 def isMoving(accelerometerData):
     if (isMoving.lastValue == None):

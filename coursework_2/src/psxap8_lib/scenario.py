@@ -1,5 +1,6 @@
 import time
 import math
+from termcolor import colored
 from enum import Enum
 from tinydb import Query, where
 from .db import db
@@ -22,11 +23,11 @@ class ScenarioStatus(Enum):
     ACTIVE = 1
 
 class Rule:
-    def __init__(self, type, comparison, threshold, *optional):
-        if 'attribute' in optional:
-            self.attribute = optional['attribute']
+    def __init__(self, type, comparison, threshold, **optional):
+        if 'attributes' in optional:
+            self.attributes = optional['attributes']
         else:
-            self.attribute = 'self'
+            self.attributes = 'self'
         self.type = type
         self.comparison = comparison
         self.threshold = threshold
@@ -47,16 +48,38 @@ class Rule:
 class ThresholdRule(Rule):
     def isBroken(self, data):
         for row in data:
-            value = row['value'] if self.attribute == 'self' else row['value'][self.attribute]
+            value = row['value']
+            if self.attributes != 'self':
+                for attr in self.attributes:
+                    value = value[attr]
             if self.compare(value):
                 return True
         return False
+
+class RepeatedThresholdRule(Rule):
+    def __init__(self, type, comparison, threshold, repetitions, **optional):
+        super().__init__(type, comparison, threshold, **optional)
+        self.repetitions = repetitions
+    def isBroken(self, data):
+        repeated = 0
+        for row in data:
+            value = row['value']
+            if self.attributes != 'self':
+                for attr in self.attributes:
+                    value = value[attr]
+            if self.compare(value):
+                repeated += 1
+        return repeated >= self.repetitions
+
 
 class ProgressRule(Rule):
     def isBroken(self, data):
         lastData = None
         for row in data:
-            value = row['value'] if self.attribute == 'self' else row['value'][self.attribute]
+            value = row['value']
+            if self.attributes != 'self':
+                for attr in self.attributes:
+                    value = value[attr]
             if lastData:
                 if self.compare(math.fabs(lastData - value)):
                     return True
@@ -82,8 +105,8 @@ class Scenario:
                     brokenRules += 1
             if brokenRules >= len(self.rules):
                 self.status = ScenarioStatus.ACTIVE
-                print('Scenario active: ', self.name)
+                print('|--', self.name, colored('[ACTIVE]', 'blue'))
             else:
                 self.status = ScenarioStatus.INACTIVE
-                print('Scenario inactive: ', self.name)
+                print('|--', self.name, colored('[INACTIVE]', 'red'))
             self.lastMonitor = now
